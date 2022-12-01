@@ -36,25 +36,35 @@ developer_name, total_download, app_dict = get_user_app_download_info(
     '876cfd5e-4e42-48ca-8869-cd7c59235573', 'all')
 
 # developer_name, total_download, app_dict = get_user_app_download_info(
-#     'cdc2c15c-3ac3-46c6-99ec-a9c0f4a135e0', 'all') #li2niu
+#     'cdc2c15c-3ac3-46c6-99ec-a9c0f4a135e0', 'all')  # li2niu
 
 print('{}: total downloads:{} downloads rank;{}'.format(
     developer_name, total_download, app_dict))
 
 template = '''
-![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}%20Global%20Downloads&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dall)
-![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}%20ROW%20Downloads&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcom)
-![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}%20China%20Downloads&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcn)
-![{}](https://img.shields.io/badge/dynamic/json?color=blue&label={}%20ROW%20Rating&style=flat-square&query=ratings&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcom)
-![{}](https://img.shields.io/badge/dynamic/json?color=blue&label={}%20China%20Rating&style=flat-square&query=ratings&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcn)
-![{}](https://img.shields.io/badge/dynamic/json?color=orange&label={}%20Reviews&style=flat-square&query=reviews&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dall)
+![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dall)
+![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dall)
+![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcom)
+![{}](https://img.shields.io/badge/dynamic/json?color=green&label={}&style=flat-square&query=downloads&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcn)
+![{}](https://img.shields.io/badge/dynamic/json?color=blue&label={}&style=flat-square&query=ratings&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcom)
+![{}](https://img.shields.io/badge/dynamic/json?color=blue&label={}&style=flat-square&query=ratings&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcn)
+![{}](https://img.shields.io/badge/dynamic/json?color=orange&label={}&style=flat-square&query=reviews&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcom)
+![{}](https://img.shields.io/badge/dynamic/json?color=orange&label={}&style=flat-square&query=reviews&url=https%3A%2F%2Fciqstats.li2niu.com%2Fapi%2Fstats%3Fappid%3D{}%26domain%3Dcn)
 
 '''
 
 for appid, app in app_dict.items():
-    if app['total_downloads'] <= 1000:
-        continue
-    urlencoded_app_name = urllib.parse.quote(
-        app['app_name'])
-    print(template.format(app['app_name'], urlencoded_app_name, appid, app['app_name'], urlencoded_app_name, appid, app['app_name'], urlencoded_app_name,
-          appid, app['app_name'], urlencoded_app_name, appid, app['app_name'], urlencoded_app_name, appid, app['app_name'], urlencoded_app_name, appid))
+    # if app['total_downloads'] <= 1000:
+    #     continue
+    print(app['app_name'])
+    print(template.format(
+        app['app_name'], urllib.parse.quote('全球下载'), appid,
+        app['app_name'], urllib.parse.quote(app['app_name']), appid,
+        app['app_name'], urllib.parse.quote('国际服下载'), appid,
+        app['app_name'], urllib.parse.quote('中国服下载'), appid,
+        app['app_name'], urllib.parse.quote('国际服评分'), appid,
+        app['app_name'], urllib.parse.quote('中国服评分'), appid,
+        app['app_name'], urllib.parse.quote(
+            '国际服评价数量'), appid,
+        app['app_name'], urllib.parse.quote('中国服评价数量'), appid)
+    )
