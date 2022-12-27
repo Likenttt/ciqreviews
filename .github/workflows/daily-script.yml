@@ -29,7 +29,8 @@ jobs:
       - name: Create daily issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_NAME: ${{ github.event.repository.name }}
+          REPO_NAME: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
         run: |
           python data-scripts/create-issue.py
       
