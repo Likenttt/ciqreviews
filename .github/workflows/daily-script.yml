@@ -27,6 +27,9 @@ jobs:
           
       # 运行py脚本创建issue
       - name: Create daily issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME: ${{ secrets.REPO_NAME }}
         run: |
           python data-scripts/create-issue.py
       
