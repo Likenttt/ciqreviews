@@ -1,6 +1,7 @@
 name: Create Daily Issue
 
 on:
+  workflow_dispatch:
   schedule:
   # 每天凌晨1点执行
     - cron: '0 1 * * *'
