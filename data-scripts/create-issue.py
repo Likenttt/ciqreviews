@@ -6,7 +6,8 @@ from datetime import datetime
 
 TOKEN = os.environ['GITHUB_TOKEN']
 g = Github(TOKEN)
-repo = g.get_repo(os.environ['OWNER'] + '/' + os.environ['REPO_NAME'])
+repo_name = os.environ['OWNER'] + '/' + os.environ['REPO_NAME']
+repo = g.get_repo(repo_name)
 
 # 2 kinds of issues
 # 1. all developers' id-app dict
