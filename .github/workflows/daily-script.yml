@@ -29,8 +29,7 @@ jobs:
       - name: Create daily issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_NAME: ${{ secrets.REPO_NAME }}
-          OWNER: ${{ secrets.OWNER }}
+          REPO_NAME: ${{ REPO_NAME }}
         run: |
           python data-scripts/create-issue.py
       
