@@ -30,6 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_NAME: ${{ secrets.REPO_NAME }}
+          OWNER: ${{ secrets.OWNER }}
         run: |
           python data-scripts/create-issue.py
       
